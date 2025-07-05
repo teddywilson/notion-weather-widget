@@ -3,16 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Weather Widget</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #date {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
+  <div id="date"></div>
+
   <a class="weatherwidget-io"
-     href="https://forecast7.com/en/40d71n74d01/new-york/"
+     href="https://forecast7.com/en/40d71n74d01/new-york/?unit=us"
      data-label_1="NEW YORK"
      data-label_2="WEATHER"
      data-theme="original"
      data-units="us">
      NEW YORK WEATHER
   </a>
+
+  <script>
+    // Insert today's date
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const now = new Date();
+    const formatted = now.toLocaleDateString('en-US', options).replace(',', ' —');
+    document.getElementById('date').textContent = formatted;
+  </script>
+
   <script>
     !function(d,s,id){
       var js,fjs=d.getElementsByTagName(s)[0];
